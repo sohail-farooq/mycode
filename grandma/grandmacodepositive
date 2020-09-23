@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+
+
+# For every [A] I find in your [report card] I'm going to give you a new [video game] for your {collection}.
+
+reportcard = ["A","B","C","D", "F"]
+
+approved_reportcard = ["A"]
+
+for x in approved_reportcard:
+        print("\nFor every " + x, end= " I find in your report card I'm going to give you a new video game for your collection!")
+        if x not in reportcard:
+                print(" GREAT JOB!", end="")
+
+print("\n loop ended")
