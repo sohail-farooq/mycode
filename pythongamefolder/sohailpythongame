@@ -1,0 +1,71 @@
+#!/usr/bin/python3
+
+# Replace RPG starter project with this code when new instructions are live
+
+def theInstructions():
+	#print starter menu
+        print(''' You should know how to play. But in case you do not here are the instructions:
+        start in kitchen
+        grab objects
+        navigate through rooms
+        grab more objects
+        exit the house  
+        ''')
+
+def showPlayerStatus():
+            #print player status
+        print('no comments')
+        print('you are now in the ' + thisRoom)
+        #print player inventory
+        print('Inventory collected: ' + str(inventory))
+        if "item" in allrooms[thisRoom]:
+            print('item available ' + allrooms[thisRoom]['item'])
+        print('emptyyyyyy')
+
+        allrooms = {
+                'Hall' : { 
+                    'south' : 'Kitchen'
+                    },
+
+                'Kitchen' : {
+                    'north' : 'Hall'
+                    },
+
+                'Garage' : {
+                    'south' : "Garage"
+                }
+
+        }
+
+    thisRoom = 'Hall'
+
+    theInstructions()
+
+    #loop here
+    while True: 
+        showPlayerStatus()
+    #----------------copy & pasted below
+        move = ''
+        while move == '':  
+            move = input('>')
+
+        move = move.lower().split(" ", 1)
+
+            if move[0] == 'go':
+                if move[1] in rooms[currentRoom]:
+                currentRoom = rooms[currentRoom][move[1]]
+                else:
+                print('You can\'t go that way!')
+
+            if move[0] == 'get' :
+                if "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item']:
+                    inventory += [move[1]]
+                    print(move[1] + ' got!')
+                    del rooms[currentRoom]['item']
+                else:
+        
+                    print('Can\'t get ' + move[1] + '!')
+
+
+
+
